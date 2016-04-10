@@ -2,6 +2,8 @@
 
 snaps uses the notification system to prompt users for an action post-screenshot. 
 
+![snaps](resources/images/snaps.png)
+
 When the bound hotkey that initiates the script is pressed, `scrot` is
 executed in selection mode. After selecting part of the screen, a 
 notification appears with buttons asking what action to execute next.
