@@ -36,6 +36,13 @@ remote_screenshot_path = ~/web.example.com/html/screenshots/
 remote_user = user
 remote_server = ssh.example.com
 remote_server_url = http://example.com/screenshots/
+
+# File browser
+file_browser = thunar
+
+# To use imgur: https://api.imgur.com/oauth2/addclient
+imgur_client_id = xxxxxxxxxxxxxxx
+api_key = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 In order to scp without a password, you'll need to copy your ssh key over
