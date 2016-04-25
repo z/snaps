@@ -11,6 +11,8 @@ notification appears with buttons asking what action to execute next.
 Default actions include:
 
 * Upload (uses scp configured in the config.ini)
+* Upload to imgur
+* Open with file manager (default Thunar)
 * Open with GIMP
 * Cancel
 
