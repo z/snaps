@@ -1,4 +1,14 @@
-.idea
-__pycache__
+**/*.egg-info/**
+/.eggs/
+/.idea/
+/.pytest_cache/
+/.tox/
+/build/
+/config/config.ini
+/dist/
+/venv/
+*__pycache__*
 *.pyc
-config.ini
+*.swp
+*.swo
+.vscode/settings.json

@@ -1,0 +1,6 @@
+bandit!=1.6.0
+flake8
+pytest
+pytest-runner
+safety
+tox

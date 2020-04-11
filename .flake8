@@ -1,0 +1,5 @@
+[flake8]
+exclude = __pycache__, build, dist, old, venv, .eggs, "*.egg-info", .git, .tox
+ignore = C901, E128, E221, E402, E501, F401, F841
+max-complexity = 12
+max-line-length = 120
