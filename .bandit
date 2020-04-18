@@ -1,0 +1,3 @@
+[bandit]
+targets: src,setup.py
+skips: B404,B603,B607

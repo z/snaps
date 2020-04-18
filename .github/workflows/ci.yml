@@ -1,0 +1,46 @@
+name: Continous Integration
+on:
+  pull_request:
+    branches:
+      - develop
+      - master
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.6, 3.7, 3.8]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Upgrade Python dependencies
+      run: python -m pip install --upgrade pip setuptools wheel
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install --no-install-recommends -y \
+        dbus-x11 \
+        gir1.2-gtk-3.0 \
+        gir1.2-notify \
+        libgirepository1.0-dev \
+        notification-daemon \
+        python3-gi \
+        python3-gi-cairo \
+        xauth \
+        xvfb
+    - name: Setup dbus
+      run: |
+        printf "[D-BUS Service]\n\
+        Name=org.freedesktop.Notifications\n\
+        Exec=/usr/lib/notification-daemon/notification-daemon" > /usr/share/dbus-1/services/org.freedesktop.Notifications.service
+        sudo dbus-launch
+    - name: Install, Lint, Security, Test
+      if: github.head_ref != 'master' && startsWith(github.head_ref, 'meta/') == false
+      run: |
+        make develop
+        make lint
+        make security
+        xvfb-run -a make tests
